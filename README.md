@@ -1,4 +1,6 @@
-#fake-link
+<img src="https://github.com/digitalwr/fake-link/raw/main/src/fake-link-logo-full.png" width="400">
+
+# fake-link
 [![npm version](https://badge.fury.io/js/fake-link.svg)](https://badge.fury.io/js/fake-link)
 
 Library allowing to replace HTML elements by links.<br/>
@@ -9,17 +11,17 @@ but this term is not necessarily the one the front-end developer wishes to have 
 
 Thus, robots see a link to a term that makes sense, but the user benefits from more relevant ergonomics.
 
-##Installation
-###NPM
+## Installation
+### NPM
 ```shell
 npm install fake-link
 ```
 
-###CDN
+### CDN
 ```html
 <script src="https://cdn.jsdelivr.net/npm/fake-link/dist/fake-link.umd.js"></script>
 ```
-##Initialisation
+## Initialisation
 
 ```javascript
 //ES6
@@ -31,7 +33,7 @@ fakelink.Fakelink(context);
 ```
 ```context``` is an HTMLElement or `document`.
 
-###Drupal
+### Drupal
 It is possible to initialize the library as Drupal Behavior from Drupal 8.
 ```javascript
 //ES6
@@ -41,14 +43,14 @@ Drupal.behaviors.fakelink = FakelinkDrupalBehaviorInstance;
 //script CDN
 Drupal.behaviors.fakelink = fakelink.FakelinkDrupalBehaviorInstance;
 ```
-##Usage
+## Usage
 Works with 2 attributes:
 
 - `data-fl-href="/lien/target"` positioned on the element that wants to become the link
 - `data-fl-mute="div?"` positioned on the current link which will be replaced by a default `div` tag
 
-###Examples
-####Article
+### Examples
+#### Article
 ```html
 <article data-fl-href="/target/link">
     <a href="/target/link" data-fl-mute>
@@ -66,7 +68,7 @@ _becomes :_
     <div>Read more</div>
 </a>
 ```
-####Replacing a link with a custom item.
+#### Replacing a link with a custom item.
 ```html
 <a href="/target/link" class="title" data-fl-mute="span">Title</a>
 ```
