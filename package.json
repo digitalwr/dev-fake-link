@@ -1,6 +1,7 @@
 {
   "name": "fake-link",
   "version": "1.0.0",
+  "description": "A simple web component to replace a HTML element by a link or mute a link",
   "files": ["dist"],
   "main": "./dist/fake-link.umd.js",
   "module": "./dist/fake-link.mjs",
@@ -20,5 +21,10 @@
     "sass": "^1.58.3",
     "typescript": "^4.9.3",
     "vite": "^4.1.0"
-  }
+  },
+  "author": {
+    "name": "Matthieu Rébillard (LMWR)",
+    "email": "mrebillard@lmwr.fr"
+  },
+  "license": "ISC"
 }
