@@ -1,7 +1,7 @@
 <img src="https://github.com/digitalwr/fake-link/raw/main/src/fake-link-logo-full.png" width="400">
 
 # fake-link
-![npm](https://img.shields.io/npm/v/fake-link?style=flat-square)
+[![npm](https://img.shields.io/npm/v/fake-link?style=flat-square)](https://www.npmjs.com/package/fake-link)
 
 Library allowing to replace HTML elements by links.<br/>
 Also allows replacing links with HTML elements.
