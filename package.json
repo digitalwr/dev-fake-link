@@ -1,0 +1,24 @@
+{
+  "name": "fake-link",
+  "version": "1.0.0",
+  "files": ["dist"],
+  "main": "./dist/fake-link.umd.js",
+  "module": "./dist/fake-link.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/fake-link.mjs",
+      "require": "./dist/fake-link.umd.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build --mode lib",
+    "build-demo": "tsc && vite build",
+    "preview": "npm run build-demo && vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.58.3",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0"
+  }
+}

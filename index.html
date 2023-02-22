@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Démo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Démo">
+    <link rel="icon" type="image/png" href="src/fake-link-logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <link rel="stylesheet" href="src/style.scss">
+</head>
+<body>
+<div class="Page">
+    <div class="Page-logo content-limit">
+        <img src="src/fake-link-logo-full.png" alt="" width="400">
+    </div>
+    <div class="Page-demos content-limit">
+        <div class="Demo">
+            <h2 class="Demo-title">Replace HTML element by a link</h2>
+            <pre><code class="language-html">
+    <div data-fl-href="/" class="link" data-test>Link</div>
+
+    <a class="link" data-test="" href="/">Link</a>
+            </code></pre>
+            <div class="Demo-result">
+                <div data-fl-href="/" class="link" data-test>Link</div>
+            </div>
+        </div>
+
+        <div class="Demo">
+            <h2 class="Demo-title">Mute a link to a h3 title</h2>
+            <pre><code class="language-html">
+    <a href="/" data-fl-mute="h3">Not a link for user</a>
+
+    <h3>Not a link for user</h3>
+            </code></pre>
+            <div class="Demo-result">
+                <a href="/" data-fl-mute="h3">Not a link for user</a>
+            </div>
+        </div>
+
+        <div class="Demo">
+            <h2 class="Demo-title">Move a link to a full clickable card</h2>
+            <pre><code class="language-html">
+    <article data-fl-href="/" class="Post">
+        <h2>
+            <a href="/" data-fl-mute>Post title</a>
+        </h2>
+        <span class="Post-read_more">Read more</span>
+    </article>
+
+    <a class="Post" href="/">
+        <h2>
+            <div>Post title</div>
+        </h2>
+        <span class="Post-read_more">Read more</span>
+    </a>
+            </code></pre>
+            <div class="Demo-result">
+                <article data-fl-href="/" class="Post">
+                    <h2>
+                        <a href="/" data-fl-mute>Post title</a>
+                    </h2>
+                    <span class="Post-read_more">Read more</span>
+                </article>
+            </div>
+        </div>
+
+        <div class="Demo">
+            <h2 class="Demo-title">Attach event listener after replace tag and reload fake-link after DOM append</h2>
+            <pre><code class="language-html">
+    <a href="/" data-fl-mute="button" data-add-link>Add link</a>
+
+    <button data-add-link="">Add link</button>
+            </code></pre>
+            <div class="Demo-result">
+                <a href="/" data-fl-mute="button" data-add-link>Add link</a>
+                <div class="Demo-links" data-appended-links></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll("code").forEach(function(element) {
+        element.innerHTML = element.innerHTML.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script type="module" src="lib/index.ts"></script>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+:root {
+    font-size: 62.5%;
+    --color-main: #40596b;
+    --color-red: #ff7058;
+    --color-blue: #54c0eb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-size: 1.6rem;
+    font-family: sans-serif;
+    color: var(--color-main);
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+}
+
+.content-limit {
+    width: 100rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: calc(100% - 10rem);
+}
+
+.Page {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+    a {
+        color: inherit;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    &-demos {
+        margin-top: 10rem;
+    }
+}
+
+.Demo {
+    & + .Demo {
+        margin-top: 8rem;
+    }
+
+    &-result {
+        padding: 2rem;
+        border: var(--color-red) solid 1px;
+    }
+
+    &-links {
+        padding: 2rem;
+        margin-top: 1rem;
+        background-color: var(--color-blue);
+
+        &:empty {
+            display: none;
+        }
+    }
+}
+
+.Post {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    width: 30rem;
+    background: var(--color-blue);
+    padding: 2rem;
+    border-radius: 0.4rem;
+    
+    &:hover {
+        .Post-read_more {
+            text-decoration: underline;
+        }
+    }
+}
