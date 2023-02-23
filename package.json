@@ -1,7 +1,21 @@
 {
   "name": "fake-link",
-  "version": "1.0.2",
-  "description": "A simple web component to replace a HTML element by a link or mute a link",
+  "version": "1.0.0",
+  "description": "Move a link from a meaningfull element to a container for SEO purposes",
+  "homepage": "https://fake-link.vercel.app/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalwr/fake-link"
+  },
+  "bugs": {
+    "url": "https://github.com/digitalwr/fake-link/issues",
+    "email": "devs@lmwr.fr"
+  },
+  "author": {
+    "name": "Matthieu Rébillard (LMWR)",
+    "email": "mrebillard@lmwr.fr"
+  },
+  "license": "(ISC)",
   "files": ["dist"],
   "main": "./dist/fake-link.umd.js",
   "module": "./dist/fake-link.mjs",
@@ -21,10 +35,5 @@
     "sass": "^1.58.3",
     "typescript": "^4.9.3",
     "vite": "^4.1.0"
-  },
-  "author": {
-    "name": "Matthieu Rébillard (LMWR)",
-    "email": "mrebillard@lmwr.fr"
-  },
-  "license": "ISC"
+  }
 }
