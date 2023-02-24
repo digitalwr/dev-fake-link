@@ -1,6 +1,6 @@
 {
   "name": "fake-link",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Move a link from a meaningful element to a container for SEO purposes",
   "keywords": [
     "seo",
