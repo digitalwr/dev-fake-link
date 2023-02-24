@@ -11,7 +11,7 @@ but this term is not necessarily the one the front-end developer wishes to have 
 
 Thus, robots see a link to a term that makes sense, but the user benefits from more relevant ergonomics.
 
-## Installation
+## Install
 ### NPM
 ```shell
 npm install fake-link
@@ -21,7 +21,7 @@ npm install fake-link
 ```html
 <script src="https://cdn.jsdelivr.net/npm/fake-link/dist/fake-link.umd.js"></script>
 ```
-## Initialisation
+## Init
 
 ```javascript
 //ES6
@@ -31,7 +31,9 @@ new Fakelink(context);
 //script CDN
 fakelink.Fakelink(context);
 ```
-```context``` is an HTMLElement or `document`.
+| Argument | Type |
+| --- | --- |
+| `context` | `HTMLElement` \| `document` |
 
 ### Drupal
 It is possible to initialize the library as Drupal Behavior from Drupal 8.
