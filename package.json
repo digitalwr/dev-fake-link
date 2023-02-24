@@ -2,6 +2,13 @@
   "name": "fake-link",
   "version": "1.0.4",
   "description": "Move a link from a meaningful element to a container for SEO purposes",
+  "keywords": [
+    "seo",
+    "link",
+    "html",
+    "dom",
+    "es6"
+  ],
   "homepage": "https://digitalwr.github.io/fake-link/",
   "repository": {
     "type": "git",
