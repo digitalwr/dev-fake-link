@@ -8,21 +8,32 @@
     <link rel="icon" type="image/png" href="src/fake-link-logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
     <link rel="stylesheet" href="src/style.scss">
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 <body>
 <div class="Page">
     <div class="Page-logo content-limit">
         <img src="src/fake-link-logo-full.png" alt="" width="400">
     </div>
-<!--    <div class="Page-metas content-limit">-->
-<!--        <a class="github-button" href="https://github.com/digitalwr/fake-link" data-show-count="true" aria-label="Star digitalwr/fake-link on GitHub">Star on GitHub</a>-->
-<!--        <img src="https://img.shields.io/github/last-commit/digitalwr/fake-link?style=flat-square" alt="">-->
-<!--        <img src="https://img.shields.io/npm/v/fake-link?style=flat-square" alt="">-->
-<!--    </div>-->
+    <div class="Page-metas content-limit">
+        <a href="https://www.npmjs.com/package/fake-link" target="_blank">
+            <img src="https://img.shields.io/npm/v/fake-link?style=flat-square" alt="">
+        </a>
+        <a href="https://github.com/digitalwr/fake-link" target="_blank">
+            <img src="https://img.shields.io/github/last-commit/digitalwr/fake-link?style=flat-square" alt="">
+        </a>
+    </div>
+    <div class="Page-description content-limit">
+        <p>
+            <strong>fake-link</strong> is a tiny library to move a link from a meaningful element to a container for SEO purposes.
+        </p>
+        <p>
+            <a href="https://github.com/digitalwr/fake-link" target="_blank">Documentation</a>
+        </p>
+    </div>
     <div class="Page-demos content-limit">
+        <h2 class="Page-demos-title">Examples</h2>
         <div class="Demo">
-            <h2 class="Demo-title">Replace HTML element by a link</h2>
+            <h3 class="Demo-title">Replace HTML element by a link</h3>
             <pre><code class="language-html">
     <div data-fl-href="/" class="link" data-test>Link</div>
 
@@ -34,7 +45,7 @@
         </div>
 
         <div class="Demo">
-            <h2 class="Demo-title">Mute a link to a h3 title</h2>
+            <h3 class="Demo-title">Mute a link to a h3 title</h3>
             <pre><code class="language-html">
     <a href="/" data-fl-mute="h3">Not a link for user</a>
 
@@ -46,34 +57,34 @@
         </div>
 
         <div class="Demo">
-            <h2 class="Demo-title">Move a link to a full clickable card</h2>
+            <h3 class="Demo-title">Move a link to a full clickable card</h3>
             <pre><code class="language-html">
     <article data-fl-href="/" class="Post">
-        <h2>
+        <h3>
             <a href="/" data-fl-mute>Post title</a>
-        </h2>
+        </h3>
         <span class="Post-read_more">Read more</span>
     </article>
 
     <a class="Post" href="/">
-        <h2>
+        <h3>
             <div>Post title</div>
-        </h2>
+        </h3>
         <span class="Post-read_more">Read more</span>
     </a>
             </code></pre>
             <div class="Demo-result">
                 <article data-fl-href="/" class="Post">
-                    <h2>
+                    <h3>
                         <a href="/" data-fl-mute>Post title</a>
-                    </h2>
+                    </h3>
                     <span class="Post-read_more">Read more</span>
                 </article>
             </div>
         </div>
 
         <div class="Demo">
-            <h2 class="Demo-title">Attach event listener after replace tag and reload fake-link after DOM append</h2>
+            <h3 class="Demo-title">Attach event listener after replace tag and reload fake-link after DOM append</h3>
             <pre><code class="language-html">
     <a href="/" data-fl-mute="button" data-add-link>Add link</a>
 

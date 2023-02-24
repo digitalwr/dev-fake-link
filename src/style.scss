@@ -1,10 +1,12 @@
 @use "scss/breakpoints";
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
 
 :root {
     font-size: 62.5%;
     --color-main: #40596b;
     --color-red: #ff7058;
     --color-blue: #54c0eb;
+    --color-grey--light: #f5f2f0
 }
 
 * {
@@ -14,7 +16,7 @@
 body {
     margin: 0;
     font-size: 1.6rem;
-    font-family: sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     color: var(--color-main);
 }
 
@@ -22,9 +24,25 @@ h1,h2,h3,h4,h5,h6 {
     margin: 0;
 }
 
+a {
+    color: var(--color-blue);
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
 img {
     max-width: 100%;
     display: block;
+}
+
+p {
+    margin: 0;
+
+    & + p {
+        margin-top: 2rem;
+    }
 }
 
 .content-limit {
@@ -42,20 +60,39 @@ img {
     margin-top: 5rem;
     margin-bottom: 5rem;
 
-    a {
-        color: inherit;
-
-        &:hover {
-            text-decoration: none;
-        }
-    }
-
     button {
         cursor: pointer;
     }
 
+    &-metas {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 3rem;
+    }
+
+    &-description {
+        margin-top: 3rem;
+        font-size: 2rem;
+        padding-bottom: 3rem;
+        border-bottom: var(--color-main) solid 1px;
+
+        code {
+            display: inline-block;
+            font-size: 0.8em;
+            background-color: var(--color-grey--light);
+            padding: 0.1em 0.5em;
+            font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+        }
+    }
+
     &-demos {
-        margin-top: 10rem;
+        margin-top: 5rem;
+
+        &-title {
+            margin-bottom: 2rem;
+        }
     }
 }
 
@@ -83,7 +120,7 @@ img {
 .Post {
     display: block;
     text-decoration: none;
-    color: inherit;
+    color: var(--color-main);
     width: 30rem;
     max-width: 100%;
     background: var(--color-blue);
