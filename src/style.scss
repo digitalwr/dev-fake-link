@@ -1,3 +1,5 @@
+@use "scss/breakpoints";
+
 :root {
     font-size: 62.5%;
     --color-main: #40596b;
@@ -20,11 +22,20 @@ h1,h2,h3,h4,h5,h6 {
     margin: 0;
 }
 
+img {
+    max-width: 100%;
+    display: block;
+}
+
 .content-limit {
     width: 100rem;
     margin-left: auto;
     margin-right: auto;
     max-width: calc(100% - 10rem);
+
+    @include breakpoints.less-than(600px) {
+        max-width: calc(100% - 4rem);
+    }
 }
 
 .Page {
@@ -74,6 +85,7 @@ h1,h2,h3,h4,h5,h6 {
     text-decoration: none;
     color: inherit;
     width: 30rem;
+    max-width: 100%;
     background: var(--color-blue);
     padding: 2rem;
     border-radius: 0.4rem;
@@ -82,5 +94,11 @@ h1,h2,h3,h4,h5,h6 {
         .Post-read_more {
             text-decoration: underline;
         }
+    }
+}
+
+@include breakpoints.less-than(600px) {
+    pre[class*=language-] {
+        font-size: 1.3rem;
     }
 }
