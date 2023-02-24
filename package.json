@@ -1,8 +1,8 @@
 {
   "name": "fake-link",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Move a link from a meaningful element to a container for SEO purposes",
-  "homepage": "https://fake-link.vercel.app/",
+  "homepage": "https://digitalwr.github.io/fake-link/",
   "repository": {
     "type": "git",
     "url": "https://github.com/digitalwr/fake-link"
