@@ -9,6 +9,10 @@ const getConfig = ({mode}) => {
         }
     }
 
+    if(mode === 'gh-pages') {
+        config.base = '/fake-link/'
+    }
+
     if(mode === 'lib') {
         config.build.outDir = 'dist';
         config.build.lib = {

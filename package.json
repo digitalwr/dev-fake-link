@@ -28,7 +28,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build --mode lib",
-    "build-demo": "tsc && vite build",
+    "build:demo": "tsc && vite build",
+    "build:gh-pages": "tsc && vite build --mode gh-pages",
     "preview": "npm run build-demo && vite preview"
   },
   "devDependencies": {
