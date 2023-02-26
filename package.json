@@ -1,13 +1,15 @@
 {
   "name": "fake-link",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Move a link from a meaningful element to a container for SEO purposes",
   "keywords": [
     "seo",
     "link",
     "html",
     "dom",
-    "es6"
+    "es6",
+    "javascript",
+    "browser"
   ],
   "homepage": "https://digitalwr.github.io/fake-link/",
   "repository": {
@@ -19,10 +21,11 @@
     "email": "devs@lmwr.fr"
   },
   "author": {
-    "name": "Matthieu Rébillard (LMWR)",
+    "name": "Matthieu Rébillard (digitalwr)",
+    "url": "https://lmwr.fr/digitalwr",
     "email": "mrebillard@lmwr.fr"
   },
-  "license": "(ISC)",
+  "license": "ISC",
   "files": ["dist"],
   "main": "./dist/fake-link.umd.js",
   "module": "./dist/fake-link.mjs",

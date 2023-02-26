@@ -47,12 +47,12 @@
         <div class="Demo">
             <h3 class="Demo-title">Mute a link to a h3 title</h3>
             <pre><code class="language-html">
-    <a href="/" data-fl-mute="h3">Not a link for user</a>
+    <a href="/" data-fl-mute="h3" target="_blank">Not a link for user</a>
 
     <h3>Not a link for user</h3>
             </code></pre>
             <div class="Demo-result">
-                <a href="/" data-fl-mute="h3">Not a link for user</a>
+                <a href="/" data-fl-mute="h3" target="_blank">Not a link for user</a>
             </div>
         </div>
 
@@ -95,18 +95,35 @@
                 <div class="Demo-links" data-appended-links></div>
             </div>
         </div>
+        <div class="Demo">
+            <h3 class="Demo-title">Preserve attributes and remove not allowed</h3>
+            <pre><code class="language-html">
+    <div
+        data-fl-href="#"
+        data-fl-target="_blank"
+        data-fl-rel="nofollow"
+        data-test="custom"
+        data-flow-test="flow-test"
+        data-fl-test="test">Read more</div>
 
+    <a data-test="custom" data-flow-test="flow-test" href="#" target="_blank" rel="nofollow">Read more</a>
+            </code></pre>
+            <div class="Demo-result">
+                <div
+                    data-fl-href="#"
+                    data-fl-target="_blank"
+                    data-fl-rel="nofollow"
+                    data-test="custom"
+                    data-flow-test="flow-test"
+                    data-fl-test="test">Read more</div>
+            </div>
+        </div>
     </div>
 </div>
 
-<script>
-    document.querySelectorAll("code").forEach(function(element) {
-        element.innerHTML = element.innerHTML.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-    });
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 <script type="module" src="lib/index.ts"></script>
-<script type="module" src="src/main.js"></script>
+<script type="module" src="src/demo.js"></script>
 </body>
 </html>
