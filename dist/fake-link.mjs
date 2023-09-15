@@ -1,13 +1,13 @@
 var l = Object.defineProperty;
-var o = (r, t, e) => t in r ? l(r, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[t] = e;
-var c = (r, t, e) => (o(r, typeof t != "symbol" ? t + "" : t, e), e);
-class u {
+var u = (s, t, e) => t in s ? l(s, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : s[t] = e;
+var o = (s, t, e) => (u(s, typeof t != "symbol" ? t + "" : t, e), e);
+class a {
   /**
    * Initialize all fakelinks in the context.
    * @param context
    */
   constructor(t = document) {
-    c(this, "context");
+    o(this, "context");
     this.context = t.parentElement || document, this.run();
   }
   /**
@@ -17,45 +17,90 @@ class u {
     this.muteLinks(), this.createLinks();
   }
   /**
+   * Get all allowed attributes for links.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+   */
+  static getLinkAttributesAllowed() {
+    return [
+      "href",
+      "hreflang",
+      "target",
+      "rel",
+      "download",
+      "ping",
+      "type"
+    ];
+  }
+  /**
+   * Convert camelCase to kebab-case.
+   * @param str
+   */
+  static camelCaseToKebabCase(t) {
+    return t.replace(/[A-Z]/g, (e) => `-${e.toLowerCase()}`);
+  }
+  /**
    * Replace element tag with another tag.
    * @param elem
    * @param tagReplacer
    */
-  replaceTag(t, e) {
-    const a = document.createElement(e), s = t.attributes;
-    for (let n = 0; n < s.length; n++) {
-      const i = s[n];
-      a.setAttribute(i.name, i.value);
+  static replaceTag(t, e) {
+    const r = document.createElement(e), c = t.attributes;
+    for (let n = 0; n < c.length; n++) {
+      const i = c[n];
+      r.setAttribute(i.name, i.value);
     }
-    a.innerHTML = t.innerHTML, t.replaceWith(a);
+    r.innerHTML = t.innerHTML, t.replaceWith(r);
   }
   /**
    * Replace all links with the `data-fl-mute` attribute.
    */
   muteLinks() {
     var t;
-    (t = this.getFlMutes()) == null || t.forEach((e) => {
-      const a = e.getAttribute("data-fl-mute") || "div";
-      e.removeAttribute("data-fl-mute"), e.removeAttribute("href"), this.replaceTag(e, a);
-    });
+    (t = this.getFlMutes()) == null || t.forEach(a.muteLink);
+  }
+  /**
+   * Replace the element with a `data-fl-mute` attribute by a div by default.
+   * @param {HTMLElement} mute
+   */
+  static muteLink(t) {
+    const e = t.getAttribute("data-fl-mute") || "div";
+    t.removeAttribute("data-fl-mute"), a.getLinkAttributesAllowed().forEach((r) => {
+      t.removeAttribute(r);
+    }), a.replaceTag(t, e);
+  }
+  /**
+   * Replace `data-fl-href` elements by links.
+   */
+  createLinks() {
+    this.getFlHrefs().forEach(a.createLink);
   }
   /**
    * Replace the element with a `data-fl-href` attribute by a link.
+   * The link keeps all the attributes of the element.
+   * Remove all the `data-fl-*` attributes replaced by allowed attributes.
+   * @param {HTMLElement} elem
    */
-  createLinks() {
-    this.getFlHrefs().forEach((t) => {
-      const e = t.getAttribute("data-fl-href");
-      t.removeAttribute("data-fl-href"), t.setAttribute("href", e || ""), this.replaceTag(t, "a");
-    });
+  static createLink(t) {
+    Object.keys(Object.assign({}, t.dataset)).forEach((r) => {
+      const c = a.camelCaseToKebabCase(r);
+      if (c.startsWith("fl-")) {
+        const n = t.dataset[r] || "";
+        t.removeAttribute(`data-${c}`);
+        const i = c.replace("fl-", "");
+        a.getLinkAttributesAllowed().includes(i) && t.setAttribute(i, n);
+      }
+    }), a.replaceTag(t, "a");
   }
   /**
    * Retrieves all links with the `data-fl-mute` attribute.
+   * @return {NodeListOf<HTMLElement>}
    */
   getFlMutes() {
     return this.context.querySelectorAll("[data-fl-mute]");
   }
   /**
    * Retrieves all elements with the `data-fl-href` attribute.
+   * @return {NodeListOf<HTMLElement>}
    */
   getFlHrefs() {
     return this.context.querySelectorAll("[data-fl-href]");
@@ -63,13 +108,13 @@ class u {
 }
 class h {
   attach(t) {
-    console.log(t), new u(t);
+    new a(t);
   }
   detach() {
   }
 }
-const g = new h();
+const d = new h();
 export {
-  u as Fakelink,
-  g as FakelinkDrupalBehaviorInstance
+  a as Fakelink,
+  d as FakelinkDrupalBehaviorInstance
 };

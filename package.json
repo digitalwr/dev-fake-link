@@ -1,6 +1,6 @@
 {
   "name": "fake-link",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Move a link from a meaningful element to a container for SEO purposes",
   "keywords": [
     "seo",
@@ -40,7 +40,7 @@
     "build": "tsc && vite build --mode lib",
     "build:demo": "tsc && vite build",
     "build:gh-pages": "tsc && vite build --mode gh-pages",
-    "preview": "npm run build-demo && vite preview"
+    "preview": "npm run build:demo && vite preview"
   },
   "devDependencies": {
     "sass": "^1.58.3",
