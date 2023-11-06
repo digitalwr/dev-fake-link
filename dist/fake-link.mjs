@@ -1,13 +1,13 @@
-var u = Object.defineProperty;
-var h = (c, t, e) => t in c ? u(c, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : c[t] = e;
-var o = (c, t, e) => (h(c, typeof t != "symbol" ? t + "" : t, e), e);
-const a = class {
+var h = Object.defineProperty;
+var d = (s, t, e) => t in s ? h(s, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : s[t] = e;
+var l = (s, t, e) => (d(s, typeof t != "symbol" ? t + "" : t, e), e);
+const r = class {
   /**
    * Initialize all fakelinks in the context.
    * @param context
    */
   constructor(t = document) {
-    o(this, "context");
+    l(this, "context");
     this.context = t.parentElement || document, this.run();
   }
   /**
@@ -44,21 +44,24 @@ const a = class {
    * @param tagReplacer
    */
   static replaceTag(t, e) {
-    const r = document.createElement(e), i = t.attributes;
-    for (let s = 0; s < i.length; s++) {
-      const n = i[s];
-      r.setAttribute(n.name, n.value);
+    const a = document.createElement(e), i = t.attributes;
+    for (let n = 0; n < i.length; n++) {
+      const u = i[n];
+      a.setAttribute(u.name, u.value);
     }
-    for (const s of Array.from(t.children))
-      r.append(s);
-    t.replaceWith(r), t.dispatchEvent(new CustomEvent(a.EVENT_FL_REPLACED, { detail: { newElem: r } }));
+    if (Array.from(t.children).length > 0)
+      for (const n of Array.from(t.children))
+        a.append(n);
+    else
+      a.innerHTML = t.innerHTML;
+    t.replaceWith(a), t.dispatchEvent(new CustomEvent(r.EVENT_FL_REPLACED, { detail: { newElem: a } }));
   }
   /**
    * Replace all links with the `data-fl-mute` attribute.
    */
   muteLinks() {
     var t;
-    (t = this.getFlMutes()) == null || t.forEach(a.muteLink);
+    (t = this.getFlMutes()) == null || t.forEach(r.muteLink);
   }
   /**
    * Replace the element with a `data-fl-mute` attribute by a div by default.
@@ -66,15 +69,15 @@ const a = class {
    */
   static muteLink(t) {
     const e = t.getAttribute("data-fl-mute") || "div";
-    t.removeAttribute("data-fl-mute"), a.getLinkAttributesAllowed().forEach((r) => {
-      t.removeAttribute(r);
-    }), a.replaceTag(t, e);
+    t.removeAttribute("data-fl-mute"), r.getLinkAttributesAllowed().forEach((a) => {
+      t.removeAttribute(a);
+    }), r.replaceTag(t, e);
   }
   /**
    * Replace `data-fl-href` elements by links.
    */
   createLinks() {
-    this.getFlHrefs().forEach(a.createLink);
+    this.getFlHrefs().forEach(r.createLink);
   }
   /**
    * Replace the element with a `data-fl-href` attribute by a link.
@@ -83,15 +86,15 @@ const a = class {
    * @param {HTMLElement} elem
    */
   static createLink(t) {
-    Object.keys(Object.assign({}, t.dataset)).forEach((r) => {
-      const i = a.camelCaseToKebabCase(r);
+    Object.keys(Object.assign({}, t.dataset)).forEach((a) => {
+      const i = r.camelCaseToKebabCase(a);
       if (i.startsWith("fl-")) {
-        const s = t.dataset[r] || "";
+        const o = t.dataset[a] || "";
         t.removeAttribute(`data-${i}`);
         const n = i.replace("fl-", "");
-        a.getLinkAttributesAllowed().includes(n) && t.setAttribute(n, s);
+        r.getLinkAttributesAllowed().includes(n) && t.setAttribute(n, o);
       }
-    }), a.replaceTag(t, "a");
+    }), r.replaceTag(t, "a");
   }
   /**
    * Retrieves all links with the `data-fl-mute` attribute.
@@ -108,17 +111,17 @@ const a = class {
     return this.context.querySelectorAll("[data-fl-href]");
   }
 };
-let l = a;
-o(l, "EVENT_FL_REPLACED", "fl:replaced");
-class d {
+let c = r;
+l(c, "EVENT_FL_REPLACED", "fl:replaced");
+class f {
   attach(t) {
-    new l(t);
+    new c(t);
   }
   detach() {
   }
 }
-const b = new d();
+const A = new f();
 export {
-  l as Fakelink,
-  b as FakelinkDrupalBehaviorInstance
+  c as Fakelink,
+  A as FakelinkDrupalBehaviorInstance
 };
