@@ -1,7 +1,7 @@
-var l = Object.defineProperty;
-var u = (s, t, e) => t in s ? l(s, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : s[t] = e;
-var o = (s, t, e) => (u(s, typeof t != "symbol" ? t + "" : t, e), e);
-class a {
+var u = Object.defineProperty;
+var h = (c, t, e) => t in c ? u(c, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : c[t] = e;
+var o = (c, t, e) => (h(c, typeof t != "symbol" ? t + "" : t, e), e);
+const a = class {
   /**
    * Initialize all fakelinks in the context.
    * @param context
@@ -44,12 +44,14 @@ class a {
    * @param tagReplacer
    */
   static replaceTag(t, e) {
-    const r = document.createElement(e), c = t.attributes;
-    for (let n = 0; n < c.length; n++) {
-      const i = c[n];
-      r.setAttribute(i.name, i.value);
+    const r = document.createElement(e), i = t.attributes;
+    for (let s = 0; s < i.length; s++) {
+      const n = i[s];
+      r.setAttribute(n.name, n.value);
     }
-    r.innerHTML = t.innerHTML, t.replaceWith(r);
+    for (const s of Array.from(t.children))
+      r.append(s);
+    t.replaceWith(r), t.dispatchEvent(new CustomEvent(a.EVENT_FL_REPLACED, { detail: { newElem: r } }));
   }
   /**
    * Replace all links with the `data-fl-mute` attribute.
@@ -82,12 +84,12 @@ class a {
    */
   static createLink(t) {
     Object.keys(Object.assign({}, t.dataset)).forEach((r) => {
-      const c = a.camelCaseToKebabCase(r);
-      if (c.startsWith("fl-")) {
-        const n = t.dataset[r] || "";
-        t.removeAttribute(`data-${c}`);
-        const i = c.replace("fl-", "");
-        a.getLinkAttributesAllowed().includes(i) && t.setAttribute(i, n);
+      const i = a.camelCaseToKebabCase(r);
+      if (i.startsWith("fl-")) {
+        const s = t.dataset[r] || "";
+        t.removeAttribute(`data-${i}`);
+        const n = i.replace("fl-", "");
+        a.getLinkAttributesAllowed().includes(n) && t.setAttribute(n, s);
       }
     }), a.replaceTag(t, "a");
   }
@@ -105,16 +107,18 @@ class a {
   getFlHrefs() {
     return this.context.querySelectorAll("[data-fl-href]");
   }
-}
-class h {
+};
+let l = a;
+o(l, "EVENT_FL_REPLACED", "fl:replaced");
+class d {
   attach(t) {
-    new a(t);
+    new l(t);
   }
   detach() {
   }
 }
-const d = new h();
+const b = new d();
 export {
-  a as Fakelink,
-  d as FakelinkDrupalBehaviorInstance
+  l as Fakelink,
+  b as FakelinkDrupalBehaviorInstance
 };

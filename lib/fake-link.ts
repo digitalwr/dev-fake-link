@@ -1,6 +1,8 @@
 export class Fakelink {
     private context: HTMLElement | Document;
 
+    public static EVENT_FL_REPLACED = 'fl:replaced'
+
     /**
      * Initialize all fakelinks in the context.
      * @param context
@@ -56,8 +58,11 @@ export class Fakelink {
             const attribute: Attr = attributes[i]
             newElem.setAttribute(attribute.name, attribute.value)
         }
-        newElem.innerHTML = elem.innerHTML
+        for (const child of Array.from(elem.children)) {
+            newElem.append(child)
+        }
         elem.replaceWith(newElem)
+        elem.dispatchEvent(new CustomEvent(Fakelink.EVENT_FL_REPLACED, {detail: {newElem}}))
     }
 
     /**
